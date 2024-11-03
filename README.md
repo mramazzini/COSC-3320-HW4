@@ -4,8 +4,8 @@ This is a Node.js application that requires a PostgreSQL database to be set up o
 
 ## Requirements
 
-- **Node.js** (version X.X.X)
-- **PostgreSQL** server running locally
+- **Node.js** (Latest Version)
+- **PostgreSQL** Must be installed on your local machine.
 
 ## Setup Guide
 
