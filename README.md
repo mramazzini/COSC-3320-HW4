@@ -12,7 +12,7 @@ This is a Node.js application that requires a PostgreSQL database to be set up o
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone <clone link>
    cd your-repo
    ```
 
