@@ -7,12 +7,21 @@ const { sql } = require("./config/connection");
 const { initializeSQL } = require("./config/initialize");
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 
 app.use("/api", api);
 
 // Serve index.html on the "/" route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("/menu", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "menu.html"));
+});
+
+app.get("/order", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "order.html"));
 });
 
 // Start the server
