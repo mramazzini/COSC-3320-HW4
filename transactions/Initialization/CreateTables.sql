@@ -25,6 +25,10 @@ CREATE TABLE IF NOT EXISTS FoodItem (
 
 CREATE TABLE IF NOT EXISTS "Order" (
     id SERIAL PRIMARY KEY,
+    username VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    phone VARCHAR(30) NOT NULL,
+    deliveryAddress VARCHAR(200) NOT NULL,
     restaurant Location NOT NULL,
     payedWith PAYMENT_TYPE NOT NULL,
     tips DECIMAL(5, 2) NOT NULL,

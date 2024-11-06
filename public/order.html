@@ -16,8 +16,8 @@
             <div id="menu" class="w-1/2 flex flex-wrap items-center"></div>
             <form id="order-form"
                 class="flex flex-col items-center bg-gray-900 p-6 shadow-lg w-1/2 space-y-4 fixed right-0 h-screen top-0">
-                <label for="name" class="text-white text-sm font-semibold w-full">Name:</label>
-                <input type="text" id="name" name="name"
+                <label for="username" class="text-white text-sm font-semibold w-full">Name:</label>
+                <input type="text" id="username" name="username"
                     class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your name" required />
 
@@ -31,17 +31,37 @@
                     class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your phone number" required />
 
-                <label for="address" class="text-white text-sm font-semibold w-full">Address:</label>
-                <input type="text" id="address" name="address"
+                <label for="deliveryAddress" class="text-white text-sm font-semibold w-full">Address:</label>
+                <input type="text" id="deliveryAddress" name="deliveryAddress"
                     class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your address" required />
-                <button type="submit" class="btn btn-primary">Order</button>
+                <label for="tips" class="text-white text-sm font-semibold w-full">Tips:</label>
+                <input type="number" id="tips" name="tips"
+                    class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Your tips" required />
+                <label for="restaurant" class="text-white text-sm font-semibold w-full">Restaurant:</label>
+                <select id="restaurant" name="restaurant"
+                    class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                    <option value="MAIN_ST">Main St</option>
+                    <option value="JOHN_RD">John Rd</option>
+                    <option value="HARRY_BLVD">Harry Blvd</option>
+                </select>
+                <!-- <label for="payedWith" class="text-white text-sm font-semibold w-full">Payment method:</label>
+                <select id="payedWith" name="payedWith"
+                    class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+                    <option value="cash">Cash</option>
+                    <option value="card">Card</option>
+                </select> -->
+
+                <button type="submit" class="btn btn-primary">Checkout</button>
             </form>
         </div>
     </main>
 </body>
 <script src="/attachNav.js"></script>
-<script src="/generateMenu.js"></script>
+<script src="/generateOrderMenu.js"></script>
 <script src="/handleOrder.js"></script>
 
 </html>
