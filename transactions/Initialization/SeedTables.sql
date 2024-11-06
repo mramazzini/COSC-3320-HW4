@@ -49,9 +49,23 @@ INSERT INTO MealPackageItem (mealPackageId, foodItemId, quantity) VALUES
 (4, 9, 2), -- Beverage Combo, 2 Fantas
 (4, 10, 4); -- Beverage Combo, 4 Waters
 
--- INSERT INTO "Order" (restaurant, payedWith, tips, total, tax, loyaltyCardCode) VALUES
+INSERT INTO "Order" (restaurant, payedWith, tips, loyaltyCardCode) VALUES
+('MAIN_ST', 'CASH', 4.00, '123456'),
+('JOHN_RD', 'CARD', 2.00, '654321'),
+('HARRY_BLVD', 'CASH', 3.00, '123456');
+
+INSERT INTO OrderItem (foodItemId, orderId, quantity) VALUES
+(1, 1, 2), -- 2 Hamburger
+(3, 1, 1), -- 1 Fries
+(4, 1, 1), -- 1 Coke
+(1, 2, 1), -- 1 Hamburger
+(2, 2, 1), -- 1 Cheeseburger
+(3, 2, 1), -- 1 Fries
+(5, 2, 1), -- 1 Sprite
+(6, 2, 1), -- 1 Fanta
+(7, 2, 1), -- 1 Water
+(1, 3, 2); 
 
 
--- INSERT INTO OrderItem (foodItemId, orderId, quantity) VALUES
 
 

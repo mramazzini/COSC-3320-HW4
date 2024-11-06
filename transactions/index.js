@@ -1,6 +1,6 @@
 const { sql } = require("../config/connection");
 const getFoodItemsString = require("./FoodItem/GetFoodItems.sql");
-const getOrderString = require("./Order/GetOrder.sql");
+const getOrderString = require("./Order/PlaceOrder.sql");
 
 const getFoodItems = async () => {
   const result = await sql.unsafe(getFoodItemsString);
@@ -8,9 +8,9 @@ const getFoodItems = async () => {
 };
 
 const placeOrder = async (order) => {
-  const query = getOrderString;
-  const result = await sql.unsafe();
+  const query = getOrderString(order);
+  const result = await sql.unsafe(query);
   return result;
 };
 
-module.exports = { getFoodItems };
+module.exports = { getFoodItems, placeOrder };
