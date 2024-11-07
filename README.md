@@ -1,5 +1,9 @@
 # My Application
 
+> Deployed on Render: [Click Here](https://cosc-3380-hw4.onrender.com/)
+
+> Github Repository: [Click Here](https://github.com/mramazzini/COSC-3380-HW4)
+
 This is a Node.js application that requires a PostgreSQL database to be set up on your local machine. Follow these steps to get the application running.
 
 ## Requirements
