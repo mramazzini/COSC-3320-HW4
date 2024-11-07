@@ -3,9 +3,19 @@
 const placeOrderString = (order) => {
   console.log(order);
   return `
-      INSERT INTO order_item (food_item_id, quantity, order_id)
-      VALUES (${order.foodItemId}, ${order.quantity}, ${order.orderId});
+      INSERT INTO OrderItem
+      VALUES (${order.quantity}, ${order.foodItemId}, ${order.id});
     `;
 };
 
-module.exports = placeOrderString;
+const orderTotalPrice = (order) => {
+  return `
+      SELECT SUM(FI.price)
+      FROM "Order" AS O
+      JOIN OrderItem AS OI ON O.id = OI.id
+      JOIN FoodItem AS FI ON FI.id = OI.orderId
+      WHERE O.id = ${order.id}
+  `;
+};
+
+module.exports = placeOrderString, orderTotalPrice;
