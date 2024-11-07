@@ -6,7 +6,7 @@ orderForm.addEventListener("submit", (event) => {
 
   const formData = new FormData(orderForm);
   const order = {
-    name: formData.get("username"),
+    username: formData.get("username"),
     email: formData.get("email"),
     phone: formData.get("phone"),
     address: formData.get("deliveryAddress"),

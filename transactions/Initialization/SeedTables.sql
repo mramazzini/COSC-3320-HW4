@@ -49,10 +49,10 @@ INSERT INTO MealPackageItem (mealPackageId, foodItemId, quantity) VALUES
 (4, 9, 2), -- Beverage Combo, 2 Fantas
 (4, 10, 4); -- Beverage Combo, 4 Waters
 
-INSERT INTO "Order" (restaurant, payedWith, tips, loyaltyCardCode, username, email, phone, deliveryAddress) VALUES
-('MAIN_ST', 'CASH', 4.00, '123456', 'JOHN_DOE', 'J@gmail.com', '123456', '123 MAIN ST'),
-('JOHN_RD', 'CARD', 2.00, '654321', 'JANE_DOE', 'JJ@gmail.com', '654321', '321 JOHN RD'),
-('HARRY_BLVD', 'CASH', 3.00, '123456', 'JACK_DOE', 'JJJ@gmail.com' , '123123', '123 HARRY BLVD');
+INSERT INTO "Order" (id, restaurant, payedWith, tips, loyaltyCardCode, username, email, phone, deliveryAddress) VALUES
+(1, 'MAIN_ST', 'CASH', 4.00, '123456', 'JOHN_DOE', 'J@gmail.com', '123456', '123 MAIN ST'),
+(2, 'JOHN_RD', 'CARD', 2.00, '654321', 'JANE_DOE', 'JJ@gmail.com', '654321', '321 JOHN RD'),
+(3, 'HARRY_BLVD', 'CASH', 3.00, '123456', 'JACK_DOE', 'JJJ@gmail.com' , '123123', '123 HARRY BLVD');
 
 
 INSERT INTO OrderItem (foodItemId, orderId, quantity) VALUES
