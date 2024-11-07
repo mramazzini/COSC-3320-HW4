@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const order = req.body;
-  placeOrder(order);
-  res.json(order);
+  const orderRes = await placeOrder(order);
+  res.json(orderRes);
 });
 
 module.exports = router;

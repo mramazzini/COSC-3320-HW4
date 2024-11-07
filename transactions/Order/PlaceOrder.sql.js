@@ -1,11 +1,27 @@
-// -- TODO: CREATE SQL FILE TO CREATE ORDER ITEM AND ORDER FOR /api/order CONTROLLER
-
 const placeOrderString = (order) => {
-  console.log(order);
+  const orderId = Math.floor(Math.random() * 1000000);
+
+  let orderItem = order.items.map((item) => {
+    return `(${orderId}, ${item.id}, ${item.quantity})`;
+  });
+  let str = orderItem.join(", ") + ";";
   return `
-      INSERT INTO order_item (food_item_id, quantity, order_id)
-      VALUES (${order.foodItemId}, ${order.quantity}, ${order.orderId});
+  INSERT INTO "Order" (id, restaurant, payedWith, tips, username, email, phone, deliveryAddress) VALUES
+    (${orderId}, '${order.restaurant}', 'CASH', ${order.tips}, '${order.username}', '${order.email}', '${order.phone}', '${order.address}');
+    
+  INSERT INTO OrderItem (orderId, foodItemId, quantity) VALUES
+  ${str}
     `;
 };
 
-module.exports = placeOrderString;
+const orderTotalPrice = (order) => {
+  return `
+      SELECT SUM(FI.price)
+      FROM "Order" AS O
+      JOIN OrderItem AS OI ON O.id = OI.id
+      JOIN FoodItem AS FI ON FI.id = OI.orderId
+      WHERE O.id = ${order.id}
+  `;
+};
+
+(module.exports = placeOrderString), orderTotalPrice;
