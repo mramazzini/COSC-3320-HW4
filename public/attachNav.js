@@ -3,6 +3,7 @@ const generateNav = () => {
     { name: "Home", link: "/" },
     { name: "Menu", link: "/menu" },
     { name: "Order", link: "/order" },
+    { name: "Orders", link: "/orders" },
   ];
   const nav = document.getElementById("nav");
   nav.classList = "flex justify-start space-x-4 p-4 bg-gray-900";

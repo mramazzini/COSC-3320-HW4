@@ -26,8 +26,6 @@ orderForm.addEventListener("submit", (event) => {
     }
   });
 
-  console.log(order);
-
   fetch("/api/order", {
     method: "POST",
     headers: {
