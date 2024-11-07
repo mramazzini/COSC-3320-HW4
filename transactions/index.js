@@ -3,6 +3,7 @@ const getFoodItemsString = require("./FoodItem/GetFoodItems.sql");
 const getOrderString = require("./Order/PlaceOrder.sql");
 const getOrderPriceString = require("./Order/OrderTotalPrice.sql");
 const getOrdersString = require("./Order/GetOrders.sql");
+const getNetRevenueString = require("./Order/GetNetReveueString.sql");
 
 const getFoodItems = async () => {
   const result = await sql.unsafe(getFoodItemsString);
@@ -36,4 +37,9 @@ const getOrders = async () => {
   return orders;
 };
 
-module.exports = { getFoodItems, placeOrder, getOrders };
+const getNetRevenue = async () => {
+  const revenue = await sql.unsafe(getNetRevenueString());
+  return revenue[0].net_revenue;
+};
+
+module.exports = { getFoodItems, placeOrder, getOrders, getNetRevenue };
