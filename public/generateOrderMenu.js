@@ -7,7 +7,7 @@ const generateMenuItem = (foodItem) => {
     <h2 >${foodItem.name}</h2>
     <p>${foodItem.price}</p>
     <p>${foodItem.description}</p>
-    <input type="number" value="0" class="input input-xs" />
+    <input type="number" value="0" min="0" class="input input-xs" style="background-color: #f0f8ff; color: #333333;"/>
   `;
   return menuItem;
 };

@@ -6,10 +6,10 @@ const generateNav = () => {
     { name: "Orders", link: "/orders" },
   ];
   const nav = document.getElementById("nav");
-  nav.classList = "flex justify-start space-x-4 p-4 bg-gray-900";
+  nav.classList = "flex justify-start space-x-4 p-4 bg-white-900";
   navlist.forEach((navItem) => {
     const item = document.createElement("a");
-    item.classList = "btn btn-ghost border-gray-400";
+    item.classList = "btn btn-ghost border-white-400";
     item.href = navItem.link;
     item.innerHTML = navItem.name;
 
