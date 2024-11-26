@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS MealPackageItem;
 DROP TABLE IF EXISTS MealPackage;
 DROP TABLE IF EXISTS OrderItem;
+DROP TABLE IF EXISTS CreditCardInfo;
 DROP TABLE IF EXISTS "Order";
 DROP TABLE IF EXISTS LoyaltyCard;
 DROP TABLE IF EXISTS FoodItem;
@@ -33,6 +34,7 @@ CREATE TABLE IF NOT EXISTS "Order" (
     payedWith PAYMENT_TYPE NOT NULL,
     tips DECIMAL(5, 2) NOT NULL,
     loyaltyCardCode VARCHAR(30),
+
     FOREIGN KEY (loyaltyCardCode) REFERENCES LoyaltyCard(code)
 );
 
@@ -61,4 +63,15 @@ CREATE TABLE IF NOT EXISTS MealPackageItem (
     quantity INT NOT NULL,
     FOREIGN KEY (mealPackageId) REFERENCES MealPackage(id),
     FOREIGN KEY (foodItemId) REFERENCES FoodItem(id)
+);
+
+CREATE TABLE IF NOT EXISTS CreditCardInfo (
+    orderId INT PRIMARY KEY,
+    creditCardNumber INT NOT NULL,
+    cvv INT NOT NULL,
+    expirationDate DATE NOT NULL,
+    nameOnCard VARCHAR(30) NOT NULL,
+    zip VARCHAR(5),
+    
+    FOREIGN KEY (orderId) REFERENCES "Order"(id)
 );

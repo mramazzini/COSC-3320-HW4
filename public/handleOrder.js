@@ -5,6 +5,9 @@ orderForm.addEventListener("submit", (event) => {
   const menu = document.getElementById("menu");
 
   const formData = new FormData(orderForm);
+
+  // TODO: if order.payedWith is CARD then check for credit card values.... (order.creditCardNumber...)
+
   const order = {
     username: formData.get("username"),
     email: formData.get("email"),
@@ -12,6 +15,8 @@ orderForm.addEventListener("submit", (event) => {
     address: formData.get("deliveryAddress"),
     tips: formData.get("tips"),
     restaurant: formData.get("restaurant"),
+    loyaltyCardCode: formData.get("loyaltyCardCode"),
+    payedWith: formData.get("payedWith"),
     items: [],
   };
 
@@ -41,4 +46,15 @@ orderForm.addEventListener("submit", (event) => {
     .catch((error) => {
       alert("Order failed to submit!");
     });
+});
+
+document.getElementById('payedWith').addEventListener('change', function() {
+  var paymentMethod = this.value;
+  var creditCardFields = document.getElementById('creditCardFields');
+  
+  if (paymentMethod === 'CARD') {
+      creditCardFields.classList.remove('hidden');
+  } else {
+      creditCardFields.classList.add('hidden');
+  }
 });

@@ -6,8 +6,8 @@ const placeOrderString = (order) => {
   });
   let str = orderItem.join(", ") + ";";
   return `
-  INSERT INTO "Order" (id, restaurant, payedWith, tips, username, email, phone, deliveryAddress) VALUES
-    (${orderId}, '${order.restaurant}', 'CASH', ${order.tips}, '${order.username}', '${order.email}', '${order.phone}', '${order.address}');
+  INSERT INTO "Order" (id, restaurant, payedWith, tips, loyaltyCardCode, username, email, phone, deliveryAddress) VALUES
+    (${orderId}, '${order.restaurant}', '${order.payedWith}', ${order.tips}, '${order.loyaltyCardCode}', '${order.username}', '${order.email}', '${order.phone}', '${order.address}');
     
   INSERT INTO OrderItem (orderId, foodItemId, quantity) VALUES
   ${str}

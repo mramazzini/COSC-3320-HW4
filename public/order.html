@@ -15,7 +15,7 @@
         <div class="w-full flex flex-row relative">
             <div id="menu" class="w-1/2 flex flex-wrap items-center"></div>
             <form id="order-form"
-                class="flex flex-col items-center bg-gray-900 p-6 shadow-lg w-1/2 space-y-4 fixed right-0 h-screen top-0">
+                class="flex flex-col items-center bg-gray-900 p-6 shadow-lg w-1/2 space-y-4 fixed right-0 h-screen top-0 overflow-y-auto">
                 <label for="username" class="text-white text-sm font-semibold w-full">Name:</label>
                 <input type="text" id="username" name="username"
                     class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -41,20 +41,59 @@
                     placeholder="Your tips" required />
                 <label for="restaurant" class="text-white text-sm font-semibold w-full">Restaurant:</label>
                 <select id="restaurant" name="restaurant"
-                    class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required>
                     <option value="MAIN_ST">Main St</option>
                     <option value="JOHN_RD">John Rd</option>
                     <option value="HARRY_BLVD">Harry Blvd</option>
                 </select>
-                <!-- <label for="payedWith" class="text-white text-sm font-semibold w-full">Payment method:</label>
+
+                <label for="loyaltyCardCode" class="text-white text-sm font-semibold w-full">Loyalty Card Code:</label>
+                <input type="number" id="loyaltyCardCode" name="loyaltyCardCode"
+                    class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Your loyalty code:" required />
+
+                <label for="payedWith" class="text-white text-sm font-semibold w-full">Payment method:</label>
                 <select id="payedWith" name="payedWith"
                     class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
-                    <option value="cash">Cash</option>
-                    <option value="card">Card</option>
-                </select> -->
+                    <option value="CASH">Cash</option>
+                    <option value="CARD">Card</option>
+                </select>
 
+                <!-- Credit Card Fields (Initially hidden) -->
+                <div id="creditCardFields" class="hidden mt-4">
+                    
+                    <label for="creditCardNumber" class="text-white text-sm font-semibold">Card Number:</label>
+                    <input type="text" id="creditCardNumber" name="creditCardNumber" placeholder="Enter your card number"
+                    class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    maxlength="16" />
+                    
+                    <div class="mt-4 flex justify-between">
+                        <div class="w-1/2 mr-2">
+                            <label for="expirationDate" class="text-white text-sm font-semibold">Expiration Date:</label>
+                            <input type="month" id="expirationDate" name="expirationDate"
+                            class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+                        
+                        <div class="w-1/2 ml-2">
+                            <label for="cvv" class="text-white text-sm font-semibold">CVV:</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="CVV"
+                            class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxlength="3" />
+                        </div>
+                    </div>
+
+                    <label for="nameOnCard" class="text-white text-sm font-semibold w-full">Name on Card:</label>
+                    <input type="text" id="nameOnCard" name="nameOnCard" placeholder="Enter name as it appears on the card"
+                        class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        maxlength="30" minlength="30" />
+
+                    <label for="zip" class="text-white text-sm font-semibold w-full">Zip Code:</label>
+                    <input type="text" id="zip" name="zip" placeholder="Enter your billing zip code"
+                        class="w-full p-2 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        minlength="5" maxlength="5" />
+                </div>
                 <button type="submit" class="btn btn-primary">Checkout</button>
             </form>
         </div>

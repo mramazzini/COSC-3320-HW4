@@ -36,8 +36,8 @@ const renderOrders = (orders) => {
           <p>Email: ${order.email}</p>
           <p>Phone: ${order.phone}</p>
           <p>Payed With: ${order.payedwith}</p>
-          <p>Tips: $${order.tips}</p>
-          <p>Total: $${order.total}</p>
+          <p>Tips: $${(Math.ceil(order.tips * 100) / 100).toFixed(2)}</p>
+          <p>Total: $${(Math.ceil(order.total * 100) / 100).toFixed(2)}</p>
         `;
         mainEl.appendChild(orderEl);
       });
