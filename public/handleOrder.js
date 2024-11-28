@@ -6,7 +6,13 @@ orderForm.addEventListener("submit", (event) => {
 
   const formData = new FormData(orderForm);
 
-  // TODO: if order.payedWith is CARD then check for credit card values.... (order.creditCardNumber...)
+  const creditCardInfo = {
+    creditCardNumber: formData.get("creditCardNumber"),
+    expirationDate: formData.get("expirationDate"),
+    cvv: formData.get("cvv"),
+    nameOnCard: formData.get("nameOnCard"),
+    zip: formData.get("zip")
+  };
 
   const order = {
     username: formData.get("username"),
@@ -17,7 +23,8 @@ orderForm.addEventListener("submit", (event) => {
     restaurant: formData.get("restaurant"),
     loyaltyCardCode: formData.get("loyaltyCardCode"),
     payedWith: formData.get("payedWith"),
-    items: [],
+    creditCardInfo: creditCardInfo,
+    items: []
   };
 
   menu.childNodes.forEach((menuItem) => {
@@ -30,6 +37,11 @@ orderForm.addEventListener("submit", (event) => {
       order.items.push(item);
     }
   });
+
+  if (order.items.length <= 0) {
+    alert("Order is invalid, since no items were added.");
+    return;
+  }
 
   fetch("/api/order", {
     method: "POST",
