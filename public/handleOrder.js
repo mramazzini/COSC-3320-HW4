@@ -5,6 +5,15 @@ orderForm.addEventListener("submit", (event) => {
   const menu = document.getElementById("menu");
 
   const formData = new FormData(orderForm);
+
+  const creditCardInfo = {
+    creditCardNumber: formData.get("creditCardNumber"),
+    expirationDate: formData.get("expirationDate"),
+    cvv: formData.get("cvv"),
+    nameOnCard: formData.get("nameOnCard"),
+    zip: formData.get("zip")
+  };
+
   const order = {
     username: formData.get("username"),
     email: formData.get("email"),
@@ -12,7 +21,10 @@ orderForm.addEventListener("submit", (event) => {
     address: formData.get("deliveryAddress"),
     tips: formData.get("tips"),
     restaurant: formData.get("restaurant"),
-    items: [],
+    loyaltyCardCode: formData.get("loyaltyCardCode"),
+    payedWith: formData.get("payedWith"),
+    creditCardInfo: creditCardInfo,
+    items: []
   };
 
   menu.childNodes.forEach((menuItem) => {
@@ -25,6 +37,11 @@ orderForm.addEventListener("submit", (event) => {
       order.items.push(item);
     }
   });
+
+  if (order.items.length <= 0) {
+    alert("Order is invalid, since no items were added.");
+    return;
+  }
 
   fetch("/api/order", {
     method: "POST",
@@ -41,4 +58,15 @@ orderForm.addEventListener("submit", (event) => {
     .catch((error) => {
       alert("Order failed to submit!");
     });
+});
+
+document.getElementById('payedWith').addEventListener('change', function() {
+  var paymentMethod = this.value;
+  var creditCardFields = document.getElementById('creditCardFields');
+  
+  if (paymentMethod === 'CARD') {
+      creditCardFields.classList.remove('hidden');
+  } else {
+      creditCardFields.classList.add('hidden');
+  }
 });
