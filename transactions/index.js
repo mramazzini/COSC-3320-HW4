@@ -42,31 +42,4 @@ const getNetRevenue = async () => {
   return revenue[0].net_revenue;
 };
 
-const checkReferentialIntegrity = async () => { // making sure our tables fulfill integrity Major requirment 3. by ensuring the foreign keys in out database are correctly set up and and arent pointing to incorrect tables
-  const query = `
-    SELECT conname AS constraint_name,
-           confrelid::regclass AS referenced_table,
-           conrelid::regclass AS referencing_table
-    FROM pg_constraint
-    WHERE contype = 'f';
-  `;
-  const result = await sql.unsafe(query);
-  return result;
-};
-
-
-const logReferentialIntegrityCheck = async () => { // function that tries to rin the orignial checkreinteg function and will print out everything
-  try {
-    const integrityResult = await checkReferentialIntegrity();
-    console.log("Referential Integrity Check Result:", integrityResult);
-  } catch (error) {
-    console.error("Error performing referential integrity check:", error);
-  }
-};
-
-
-//logReferentialIntegrityCheck();
-
-
-module.exports = { getFoodItems, placeOrder, getOrders, getNetRevenue,
-  checkReferentialIntegrity };
+module.exports = { getFoodItems, placeOrder, getOrders, getNetRevenue };
