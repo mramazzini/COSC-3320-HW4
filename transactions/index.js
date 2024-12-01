@@ -42,31 +42,43 @@ const getNetRevenue = async () => {
   return revenue[0].net_revenue;
 };
 
-const checkReferentialIntegrity = async () => { // making sure our tables fulfill integrity Major requirment 3. by ensuring the foreign keys in out database are correctly set up and and arent pointing to incorrect tables
-  const query = `
+const checkAllForeignKeys = async () => {  //queries the database for all foreig key relationships between tables & filter for jus key constraints
+  const foreignKeyQuery = `
     SELECT conname AS constraint_name,
-           confrelid::regclass AS referenced_table,
-           conrelid::regclass AS referencing_table
+           confrelid::regclass AS parent_table,
+           conrelid::regclass AS child_table,
+           a.attname AS foreign_key,
+           c.attname AS primary_key
     FROM pg_constraint
+    JOIN pg_attribute a ON a.attnum = ANY (conkey) AND a.attrelid = conrelid
+    JOIN pg_attribute c ON c.attnum = ANY (confkey) AND c.attrelid = confrelid
     WHERE contype = 'f';
   `;
-  const result = await sql.unsafe(query);
-  return result;
-};
 
+  const foreignKeys = await sql.unsafe(foreignKeyQuery);
 
-const logReferentialIntegrityCheck = async () => { // function that tries to rin the orignial checkreinteg function and will print out everything
-  try {
-    const integrityResult = await checkReferentialIntegrity();
-    console.log("Referential Integrity Check Result:", integrityResult);
-  } catch (error) {
-    console.error("Error performing referential integrity check:", error);
+  const results = [];
+  for (const fk of foreignKeys) {
+    const { child_table, parent_table, foreign_key, primary_key } = fk;
+    const missingKeyQuery = `
+      SELECT ${child_table}.*
+      FROM ${child_table}
+      LEFT JOIN ${parent_table}
+      ON ${child_table}.${foreign_key} = ${parent_table}.${primary_key}
+      WHERE ${parent_table}.${primary_key} IS NULL;
+    `;
+    const missingKeys = await sql.unsafe(missingKeyQuery);
+    if (missingKeys.length > 0) {
+      results.push({ child_table, parent_table, missingKeys });
+    }
   }
+  return results;
 };
 
+// Example usage
+(async () => {
+  const missingForeignKeys = await checkAllForeignKeys();
+  console.log("Missing foreign keys:", missingForeignKeys);
+})();
 
-//logReferentialIntegrityCheck();
-
-
-module.exports = { getFoodItems, placeOrder, getOrders, getNetRevenue,
-  checkReferentialIntegrity };
+module.exports = { getFoodItems, placeOrder, getOrders, getNetRevenue };
