@@ -15,4 +15,5 @@ if (process.env.DATABASE_URL) {
     password: process.env.DB_PASS,
   });
 }
+
 module.exports = { sql };

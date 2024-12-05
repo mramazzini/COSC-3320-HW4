@@ -27,6 +27,7 @@ const renderOrders = (orders) => {
       const orders = data;
       mainEl.innerHTML = "";
       orders.forEach((order) => {
+        console.log(order);
         const orderEl = document.createElement("div");
         orderEl.classList = "card p-4 m-4 border border-gray-400";
         orderEl.innerHTML = `

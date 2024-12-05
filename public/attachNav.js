@@ -4,6 +4,7 @@ const generateNav = () => {
     { name: "Menu", link: "/menu" },
     { name: "Order", link: "/order" },
     { name: "Orders", link: "/orders" },
+    { name: "Bank", link: "/bank" },
   ];
   const nav = document.getElementById("nav");
   nav.classList = "flex justify-start space-x-4 p-4 bg-white-900";

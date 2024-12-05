@@ -28,6 +28,10 @@ app.get("/orders", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "orders.html"));
 });
 
+app.get("/bank", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "bank.html"));
+});
+
 // Start the server
 initializeSQL(sql).then(() => {
   app.listen(port, () => {

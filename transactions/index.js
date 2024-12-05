@@ -4,6 +4,8 @@ const getOrderString = require("./Order/PlaceOrder.sql");
 const getOrderPriceString = require("./Order/OrderTotalPrice.sql");
 const getOrdersString = require("./Order/GetOrders.sql");
 const getNetRevenueString = require("./Order/GetNetReveueString.sql");
+const getBankAccountsString = require("./Bank/GetBankAccounts");
+const isValidCardString = require("./Bank/IsValidCard");
 
 const getFoodItems = async () => {
   const result = await sql.unsafe(getFoodItemsString);
@@ -42,4 +44,21 @@ const getNetRevenue = async () => {
   return revenue[0].net_revenue;
 };
 
-module.exports = { getFoodItems, placeOrder, getOrders, getNetRevenue };
+const getBankAccounts = async () => {
+  const result = await sql.unsafe(getBankAccountsString);
+  return result;
+};
+
+const isValidCard = async (accInfo) => {
+  const result = await sql.unsafe(isValidCardString(accInfo.creditCardInfo));
+  return result;
+};
+
+module.exports = {
+  getFoodItems,
+  placeOrder,
+  getOrders,
+  getNetRevenue,
+  getBankAccounts,
+  isValidCard,
+};

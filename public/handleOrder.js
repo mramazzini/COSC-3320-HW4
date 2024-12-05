@@ -11,7 +11,7 @@ orderForm.addEventListener("submit", (event) => {
     expirationDate: formData.get("expirationDate"),
     cvv: formData.get("cvv"),
     nameOnCard: formData.get("nameOnCard"),
-    zip: formData.get("zip")
+    zip: formData.get("zip"),
   };
 
   const order = {
@@ -24,7 +24,7 @@ orderForm.addEventListener("submit", (event) => {
     loyaltyCardCode: formData.get("loyaltyCardCode"),
     payedWith: formData.get("payedWith"),
     creditCardInfo: creditCardInfo,
-    items: []
+    items: [],
   };
 
   menu.childNodes.forEach((menuItem) => {
@@ -43,30 +43,53 @@ orderForm.addEventListener("submit", (event) => {
     return;
   }
 
-  fetch("/api/order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(order),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      alert("Order submitted!");
-      orderForm.reset();
-    })
-    .catch((error) => {
-      alert("Order failed to submit!");
+  //check if card exists
+
+  const isValidCard = async (creditCardInfo) => {
+    const res = await fetch("/api/bank/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ creditCardInfo }),
     });
+    const data = await res.json();
+
+    return data.isValid;
+  };
+
+  const completeOrder = async (order) => {
+    if (order.payedWith == "CARD") {
+      const isValid = await isValidCard(order.creditCardInfo);
+      if (!isValid) {
+        alert("Invalid credit card information!");
+        return;
+      }
+    }
+    try {
+      await fetch("/api/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
+      alert("Order submitted!");
+    } catch (error) {
+      alert("Order failed to submit!");
+    }
+  };
+
+  completeOrder(order);
 });
 
-document.getElementById('payedWith').addEventListener('change', function() {
+document.getElementById("payedWith").addEventListener("change", function () {
   var paymentMethod = this.value;
-  var creditCardFields = document.getElementById('creditCardFields');
-  
-  if (paymentMethod === 'CARD') {
-      creditCardFields.classList.remove('hidden');
+  var creditCardFields = document.getElementById("creditCardFields");
+
+  if (paymentMethod === "CARD") {
+    creditCardFields.classList.remove("hidden");
   } else {
-      creditCardFields.classList.add('hidden');
+    creditCardFields.classList.add("hidden");
   }
 });
