@@ -61,22 +61,24 @@ CREATE TABLE
         FOREIGN KEY (orderId) REFERENCES "Order" (id)
     );
 
--- CREATE TABLE
---     IF NOT EXISTS MealPackage (
---         id SERIAL PRIMARY KEY,
---         name VARCHAR(30) NOT NULL,
---         description VARCHAR(200) NOT NULL,
---         price DECIMAL(5, 2) NOT NULL
---     );
--- CREATE TABLE
---     IF NOT EXISTS MealPackageItem (
---         id SERIAL PRIMARY KEY,
---         mealPackageId INT NOT NULL,
---         FOREIGN KEY (mealPackageId) REFERENCES MealPackage (id),
---         foodItemId INT NOT NULL,
---         FOREIGN KEY (foodItemId) REFERENCES FoodItem (id),
---         quantity INT NOT NULL
---     );
+CREATE TABLE
+    IF NOT EXISTS MealPackage (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(30) NOT NULL,
+        description VARCHAR(200) NOT NULL,
+        price DECIMAL(5, 2) NOT NULL
+    );
+
+CREATE TABLE
+    IF NOT EXISTS MealPackageItem (
+        id SERIAL PRIMARY KEY,
+        mealPackageId INT NOT NULL,
+        FOREIGN KEY (mealPackageId) REFERENCES MealPackage (id),
+        foodItemId INT NOT NULL,
+        FOREIGN KEY (foodItemId) REFERENCES FoodItem (id),
+        quantity INT NOT NULL
+    );
+
 CREATE TABLE
     IF NOT EXISTS BankAccount (
         creditCardNumber VARCHAR(30) PRIMARY KEY,
