@@ -4,6 +4,8 @@
 
 > Github Repository: [Click Here](https://github.com/mramazzini/COSC-3380-HW4)
 
+> Video Link: [Click Here](https://drive.google.com/file/d/1jO6i2C-S05uL_sFdpleCKggXo19Xm5HN/view?usp=sharing)
+
 This is a Node.js application that requires a PostgreSQL database to be set up on your local machine. Follow these steps to get the application running.
 
 ## Requirements
