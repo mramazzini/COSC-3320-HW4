@@ -89,133 +89,131 @@ VALUES
     ('230847', 'Lucas'),
     ('506291', 'Mia');
 
-INSERT INTO
-    MealPackage (name, description, price)
-VALUES
-    (
-        'Family Combo',
-        '2 Pepperoni Pizzas, 1 Cheese Pizza, 1 Bread Sticks, 1 Garlic Knots',
-        30.00
-    ),
-    (
-        'Party Combo',
-        '3 Pepperoni Pizzas, 2 Cheese Pizzas, 1 Hawaiian Pizza, 2 Bread Sticks, 2 Garlic Knots',
-        45.00
-    ),
-    ('Dessert Combo', '2 Cheesecakes', 8.00),
-    (
-        'Beverage Combo',
-        '4 Cokes, 2 Sprites, 2 Fantas, 4 Waters',
-        20.00
-    ),
-    (
-        'Burger & Fries Combo',
-        '1 classic hamburger and 1 portion of fries at a special price.',
-        6.50
-    ),
-    (
-        'Pizza & Soda Combo',
-        '1 Margherita pizza and 1 can of Coke for a discounted price.',
-        14.49
-    ),
-    (
-        'Smoothie & Green Tea Combo',
-        '1 smoothie bowl and 1 green tea to refresh you.',
-        10.25
-    ),
-    (
-        'Latte & Cake Combo',
-        '1 iced latte with 1 classic hamburger for a fulfilling meal.',
-        9.50
-    ),
-    (
-        'Family Pizza Combo',
-        '2 Margherita pizzas and 1 Caesar salad for the whole family.',
-        30.99
-    ),
-    (
-        'Soda & Fries Combo',
-        '2 cans of Coke and 2 portions of fries for a quick snack.',
-        8.50
-    ),
-    (
-        'Ultimate Beverage Combo',
-        '1 can of Coke, 1 can of Sprite, and 1 bottle of water to keep you refreshed.',
-        4.00
-    ),
-    (
-        'Pizza & Salad Combo',
-        '1 Margherita pizza and 1 Caesar salad for a balanced meal.',
-        21.00
-    ),
-    (
-        'Burger Combo',
-        '1 classic hamburger, 1 portion of fries, and 1 can of Fanta.',
-        9.99
-    ),
-    (
-        'Veggie Refresh Combo',
-        '1 Caesar salad, 1 smoothie bowl, and 1 bottle of water.',
-        17.99
-    ),
-    (
-        'Fries & Drink Combo',
-        '3 portions of fries and 3 cans of Coke for a quick meal.',
-        12.50
-    ),
-    (
-        'Breakfast Combo',
-        '1 iced latte, 1 portion of fries, and 1 green tea to kickstart your day.',
-        11.75
-    );
-
+-- INSERT INTO
+--     MealPackage (name, description, price)
+-- VALUES
+--     (
+--         'Family Combo',
+--         '2 Pepperoni Pizzas, 1 Cheese Pizza, 1 Bread Sticks, 1 Garlic Knots',
+--         30.00
+--     ),
+--     (
+--         'Party Combo',
+--         '3 Pepperoni Pizzas, 2 Cheese Pizzas, 1 Hawaiian Pizza, 2 Bread Sticks, 2 Garlic Knots',
+--         45.00
+--     ),
+--     ('Dessert Combo', '2 Cheesecakes', 8.00),
+--     (
+--         'Beverage Combo',
+--         '4 Cokes, 2 Sprites, 2 Fantas, 4 Waters',
+--         20.00
+--     ),
+--     (
+--         'Burger & Fries Combo',
+--         '1 classic hamburger and 1 portion of fries at a special price.',
+--         6.50
+--     ),
+--     (
+--         'Pizza & Soda Combo',
+--         '1 Margherita pizza and 1 can of Coke for a discounted price.',
+--         14.49
+--     ),
+--     (
+--         'Smoothie & Green Tea Combo',
+--         '1 smoothie bowl and 1 green tea to refresh you.',
+--         10.25
+--     ),
+--     (
+--         'Latte & Cake Combo',
+--         '1 iced latte with 1 classic hamburger for a fulfilling meal.',
+--         9.50
+--     ),
+--     (
+--         'Family Pizza Combo',
+--         '2 Margherita pizzas and 1 Caesar salad for the whole family.',
+--         30.99
+--     ),
+--     (
+--         'Soda & Fries Combo',
+--         '2 cans of Coke and 2 portions of fries for a quick snack.',
+--         8.50
+--     ),
+--     (
+--         'Ultimate Beverage Combo',
+--         '1 can of Coke, 1 can of Sprite, and 1 bottle of water to keep you refreshed.',
+--         4.00
+--     ),
+--     (
+--         'Pizza & Salad Combo',
+--         '1 Margherita pizza and 1 Caesar salad for a balanced meal.',
+--         21.00
+--     ),
+--     (
+--         'Burger Combo',
+--         '1 classic hamburger, 1 portion of fries, and 1 can of Fanta.',
+--         9.99
+--     ),
+--     (
+--         'Veggie Refresh Combo',
+--         '1 Caesar salad, 1 smoothie bowl, and 1 bottle of water.',
+--         17.99
+--     ),
+--     (
+--         'Fries & Drink Combo',
+--         '3 portions of fries and 3 cans of Coke for a quick meal.',
+--         12.50
+--     ),
+--     (
+--         'Breakfast Combo',
+--         '1 iced latte, 1 portion of fries, and 1 green tea to kickstart your day.',
+--         11.75
+--     );
 -- Each combo contains different combinations of items from the menu at special prices!
-INSERT INTO
-    MealPackageItem (mealPackageId, foodItemId, quantity)
-VALUES
-    (1, 1, 2), -- Family Combo, 2 Pepperoni Pizzas
-    (1, 2, 1), -- Family Combo, 1 Cheese Pizza
-    (1, 4, 1), -- Family Combo, 1 Bread Sticks
-    (1, 5, 1), -- Family Combo, 1 Garlic Knots
-    (2, 1, 3), -- Party Combo, 3 Pepperoni Pizzas
-    (2, 2, 2), -- Party Combo, 2 Cheese Pizzas
-    (2, 3, 1), -- Party Combo, 1 Hawaiian Pizza
-    (2, 4, 2), -- Party Combo, 2 Bread Sticks
-    (2, 5, 2), -- Party Combo, 2 Garlic Knots
-    (3, 6, 2), -- Dessert Combo, 2 Cheesecakes
-    (4, 7, 4), -- Beverage Combo, 4 Cokes
-    (4, 8, 2), -- Beverage Combo, 2 Sprites
-    (4, 9, 2), -- Beverage Combo, 2 Fantas
-    (4, 10, 4), -- Beverage Combo, 4 Waters
-    (5, 11, 1), -- Burger & Fries Combo, 1 classic hamburger
-    (5, 12, 1), -- Burger & Fries Combo, 1 portion of fries
-    (6, 13, 1), -- Pizza & Soda Combo, 1 Margherita pizza
-    (6, 7, 1), -- Pizza & Soda Combo, 1 can of Coke
-    (7, 16, 1), -- Smoothie & Green Tea Combo, 1 smoothie bowl
-    (7, 17, 1), -- Smoothie & Green Tea Combo, 1 green tea
-    (8, 14, 1), -- Latte & Cake Combo, 1 iced latte
-    (8, 11, 1), -- Latte & Cake Combo, 1 classic hamburger
-    (9, 13, 2), -- Family Pizza Combo, 2 Margherita pizzas
-    (9, 15, 1), -- Family Pizza Combo, 1 Caesar salad
-    (10, 7, 2), -- Soda & Fries Combo, 2 cans of Coke
-    (10, 12, 2), -- Soda & Fries Combo, 2 portions of fries
-    (11, 7, 1), -- Ultimate Beverage Combo, 1 can of Coke
-    (11, 8, 1), -- Ultimate Beverage Combo, 1 can of Sprite
-    (11, 10, 1), -- Ultimate Beverage Combo, 1 bottle of water
-    (12, 13, 1), -- Pizza & Salad Combo, 1 Margherita pizza
-    (12, 15, 1), -- Pizza & Salad Combo, 1 Caesar salad
-    (13, 11, 1), -- Burger Combo, 1 classic hamburger
-    (13, 12, 1), -- Burger Combo, 1 portion of fries
-    (13, 9, 1), -- Burger Combo, 1 can of Fanta-- "Veggie Refresh Combo
-    (14, 15, 1), -- Veggie Refresh Combo, 1 Caesar salad
-    (14, 16, 1), -- Veggie Refresh Combo, 1 smoothie bowl
-    (14, 10, 1), -- Veggie Refresh Combo, 1 bottle of water
-    (15, 12, 3), -- Fries & Drink Combo, 3 portions of fries
-    (15, 7, 3), -- Fries & Drink Combo, 3 cans of Coke-- "Breakfast Combo
-    (16, 14, 1), -- Breakfast Combo, 1 iced latte
-    (16, 12, 1), -- Breakfast Combo, 1 portion of fries
-    (16, 17, 1);
-
+-- INSERT INTO
+--     MealPackageItem (mealPackageId, foodItemId, quantity)
+-- VALUES
+--     (1, 1, 2), -- Family Combo, 2 Pepperoni Pizzas
+--     (1, 2, 1), -- Family Combo, 1 Cheese Pizza
+--     (1, 4, 1), -- Family Combo, 1 Bread Sticks
+--     (1, 5, 1), -- Family Combo, 1 Garlic Knots
+--     (2, 1, 3), -- Party Combo, 3 Pepperoni Pizzas
+--     (2, 2, 2), -- Party Combo, 2 Cheese Pizzas
+--     (2, 3, 1), -- Party Combo, 1 Hawaiian Pizza
+--     (2, 4, 2), -- Party Combo, 2 Bread Sticks
+--     (2, 5, 2), -- Party Combo, 2 Garlic Knots
+--     (3, 6, 2), -- Dessert Combo, 2 Cheesecakes
+--     (4, 7, 4), -- Beverage Combo, 4 Cokes
+--     (4, 8, 2), -- Beverage Combo, 2 Sprites
+--     (4, 9, 2), -- Beverage Combo, 2 Fantas
+--     (4, 10, 4), -- Beverage Combo, 4 Waters
+--     (5, 11, 1), -- Burger & Fries Combo, 1 classic hamburger
+--     (5, 12, 1), -- Burger & Fries Combo, 1 portion of fries
+--     (6, 13, 1), -- Pizza & Soda Combo, 1 Margherita pizza
+--     (6, 7, 1), -- Pizza & Soda Combo, 1 can of Coke
+--     (7, 16, 1), -- Smoothie & Green Tea Combo, 1 smoothie bowl
+--     (7, 17, 1), -- Smoothie & Green Tea Combo, 1 green tea
+--     (8, 14, 1), -- Latte & Cake Combo, 1 iced latte
+--     (8, 11, 1), -- Latte & Cake Combo, 1 classic hamburger
+--     (9, 13, 2), -- Family Pizza Combo, 2 Margherita pizzas
+--     (9, 15, 1), -- Family Pizza Combo, 1 Caesar salad
+--     (10, 7, 2), -- Soda & Fries Combo, 2 cans of Coke
+--     (10, 12, 2), -- Soda & Fries Combo, 2 portions of fries
+--     (11, 7, 1), -- Ultimate Beverage Combo, 1 can of Coke
+--     (11, 8, 1), -- Ultimate Beverage Combo, 1 can of Sprite
+--     (11, 10, 1), -- Ultimate Beverage Combo, 1 bottle of water
+--     (12, 13, 1), -- Pizza & Salad Combo, 1 Margherita pizza
+--     (12, 15, 1), -- Pizza & Salad Combo, 1 Caesar salad
+--     (13, 11, 1), -- Burger Combo, 1 classic hamburger
+--     (13, 12, 1), -- Burger Combo, 1 portion of fries
+--     (13, 9, 1), -- Burger Combo, 1 can of Fanta-- "Veggie Refresh Combo
+--     (14, 15, 1), -- Veggie Refresh Combo, 1 Caesar salad
+--     (14, 16, 1), -- Veggie Refresh Combo, 1 smoothie bowl
+--     (14, 10, 1), -- Veggie Refresh Combo, 1 bottle of water
+--     (15, 12, 3), -- Fries & Drink Combo, 3 portions of fries
+--     (15, 7, 3), -- Fries & Drink Combo, 3 cans of Coke-- "Breakfast Combo
+--     (16, 14, 1), -- Breakfast Combo, 1 iced latte
+--     (16, 12, 1), -- Breakfast Combo, 1 portion of fries
+--     (16, 17, 1);
 -- Breakfast Combo, 1 green tea
 INSERT INTO
     "Order" (
